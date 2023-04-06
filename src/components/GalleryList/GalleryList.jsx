@@ -6,7 +6,9 @@ function GalleryList() {
     const [listOfItems, setListofItems] = useState([]);
 
     const fetchGalleryList = () => {
+
         //! GET request
+        console.log('Testing 456')
         axios.get('/gallery').then((response) => {
             //update the array
             setListofItems(response.data);
@@ -23,6 +25,7 @@ function GalleryList() {
     }, []);
 
     //! What will display on the DOM
+    //TODO Make sure these keys are correct
     return (
 
         <>
@@ -32,8 +35,7 @@ function GalleryList() {
                     <GalleryItem
                         key={item.id}
                         path={item.path}
-                        description={item.description}
-                        likes= {item.likes}
+                        likes={item.likes}
                         fetchGalleryList={fetchGalleryList}
                     />
                 ))

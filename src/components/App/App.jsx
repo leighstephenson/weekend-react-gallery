@@ -9,6 +9,7 @@ function App() {
   const [galleryList, setGalleryList] = useState('');
   const fetchGalleryData = () => {
     //! GET request
+    console.log('Testing 123');
     axios.get('/gallery').then((response) => {
       //update the array
       setGalleryList(response.data);
@@ -33,7 +34,8 @@ function App() {
         <GalleryList />
 
       </p>
-      <img src="images/goat_small.jpg" />
+      {/* Placeholder image */}
+      <img src="images/sedona-hike.png" />
     </div>
   );
 }
