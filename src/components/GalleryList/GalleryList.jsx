@@ -8,11 +8,11 @@ function GalleryList() {
     const fetchGalleryList = () => {
 
         //! GET request
-        console.log('Testing 456')
+        //console.log('Testing 456')
         axios.get('/gallery').then((response) => {
             //update the array
             setListofItems(response.data);
-            console.log('Testing in GET on GalleryList')
+            //console.log('Testing in GET on GalleryList')
         }).catch((error) => {
             console.log(`Error in GET on GalleryList: ${error}`)
             alert('Something wrong on GalleryList!');
@@ -34,6 +34,7 @@ function GalleryList() {
                 listOfItems.map((item) => (
                     <GalleryItem
                         key={item.id}
+                        title={item.title}
                         path={item.path}
                         likes={item.likes}
                         fetchGalleryList={fetchGalleryList}
