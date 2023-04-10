@@ -6,16 +6,25 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
+import { borders } from '@mui/system';
+import { flexbox } from '@mui/system';
+
+//TODO utilize "joy MUI"?
+//import { CardCover } from '@mui/joy';
+//import CardCover from '@mui/joy/CardCover';
+//import Card from '@mui/joy/Card';
+//import CardCover from '@mui/joy/CardCover';
+//import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+
 
 
 function GalleryItem({ item, id, path, description, title, likes, fetchGalleryList }) {
-    //TODO consts, functions, conditional rendering go here
-
 
     //! PUT request to UPDATE likes
     //TODO need to get this working, no errors but not updating anything
     const likePhoto = (e) => {
         //console.log('Testing in likePhoto');
+        console.log(id);
         axios.put(`/gallery/like/${id}`, item).then(response => {
             fetchGalleryList();
             console.log(`You liked the ${title} photo. Likes: ${likes} `)
@@ -27,49 +36,57 @@ function GalleryItem({ item, id, path, description, title, likes, fetchGalleryLi
 
 
 
+    //! Toggle from photo to description 
     const [toggle, setToggle] = useState(false);
 
-    //! Toggle from photo to description 
-    //TODO need to call toggleDisplay() somewhere within the return 
-    //TODO to display on DOM?
+    //This code will have the description display below of photo instead of in place of it
+    // const toggleDisplay = () => {
+    //     setToggle(!toggle);
 
-    const toggleDisplay = (e) => {
-        if (toggle === true) {
-            return (
-                <div>
-                    {description}
-                    Description should be here
-                </div>
-            ) //End return
-        }
-
-        // else {
-        //     return (
-        //         <div>
-        //             <img src={path} alt={title} />
-        //         </div>
-        //     ); //End else return
-        // }
-    } //End toggleDisplay ()
+    //     };
 
 
-    //TODO utilize mui here
+    // const toggleDisplay = () => {
+    //     if (toggle === true) {
+    //         return (
+    //             <div>
+    //                 {description}
+    //             </div>
+    //         ) //End return
+    //     }
+
+    // } //End toggleDisplay ()
+
+
     //! What will display on DOM
-    //
     return (
         <>
-            <Card>
+            <Card sx={{
+                display: 'inline-flex',
+                justifyContent: 'center',
+                border: 2,
+                margin: 2,
+                boxShadow: 10,
+
+            }}>
                 <CardContent>
-                    <li>
-                        <Typography variant="h4">
+                    <li onClick={() => setToggle(!toggle)}>
+
+                        <Typography variant="h6">
                             {title}
                         </Typography>
 
-                        <img src={path} alt={title} onClick={(e) => setToggle(!toggle)} />
-                        {toggleDisplay()}
+                        <Typography class='toggleDisplay'>
+                            {toggle ? (
+                                <p> {description} </p>
+                            ) : (
+                                <img src={path} alt={title} onClick={(e) => setToggle(!toggle)} />
+
+                            )}
+                        </Typography>
 
                         <Typography>
-                            likes: {likes}
+                            Likes: {likes}
                         </Typography>
 
                         <Button variant="outlined" onClick={(e) => likePhoto(e)}> Like button </Button>

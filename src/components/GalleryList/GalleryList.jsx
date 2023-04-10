@@ -25,24 +25,25 @@ function GalleryList() {
     }, []);
 
     //! What will display on the DOM
-    //TODO Make sure these keys are correct
     return (
 
-        <>
-
+        <ul>
+        
             {
                 listOfItems.map((item) => (
                     <GalleryItem
                         key={item.id}
+                        id={item.id}
                         title={item.title}
                         path={item.path}
                         likes={item.likes}
+                        description={item.description}
                         fetchGalleryList={fetchGalleryList}
                     />
                 ))
             }
 
-        </>
+        </ul>
 
     ) // End return
 } // End of GalleryList function

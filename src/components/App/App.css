@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  /* background: url(background-texture.jpg); */
+  background-image: linear-gradient( rgb(128, 112, 170) 30%, rgb(60, 13, 32), black);
+  /* background: url(background-texture-jpg) no-repeat center fixed; */
+  background-size: cover;
 }
 
 .App-header {
@@ -14,6 +18,20 @@
 }
 
 img {
-  width: 200px;
+  width: 300px;
+}
+
+.toggleDisplay{
+  width: 300px;
+  height: 400px;
+  font-style: italic;
+  display:inline-block;
+  font-size: 25px;
+}
+
+ul {
+  list-style-type: none;
+  display: block;
+  text-align: center;
 }
 
