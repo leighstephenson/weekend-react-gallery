@@ -26,7 +26,7 @@ Multiple days of work over a 2 week period.
 2. Run `npm install`
 2. Now open the built-in terminal and enter `npm run server
 3. In a different tab of the terminal, enter `npm run client`
-4. A browser window should open automatically. Thanks for viewing!
+4. A browser window should open automatically. 
 
 ## Usage
 
